@@ -57,8 +57,6 @@ public class Triage {
 	 *            the initial number of patients
 	 * @param beds
 	 *            the number of beds in the ER
-	 * @param doctors
-	 *            the number of doctors
 	 * @param wait_cap
 	 *            the capacity of the waiting room
 	 * @throws IOException
