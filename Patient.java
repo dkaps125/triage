@@ -31,10 +31,15 @@ public class Patient extends Person {
 	 * @param args
 	 * @throws IOException
 	 */
-//	public static void main(String[] args) throws IOException {
-//		Patient p = genPatient();
-//		System.out.println(p.toString());
-//	}
+	public static void main(String[] args) throws IOException {
+		Patient p = genPatient();
+		System.out.println(p.toString() + "!");
+	}
+	
+	/**
+	 * An empty constructor for use with the names function
+	 */
+	public Patient() {}
 	
 	/**
 	 * A constructor for a patient
@@ -82,6 +87,24 @@ public class Patient extends Person {
 		return p;
 	}
 	
+	public String names() {
+		Scanner scan = new Scanner(getClass().getResourceAsStream("Names.txt"));
+		String tot = "";
+		int i = 1;
+		while (scan.hasNext()) {
+			if (i == 1) {
+				tot += scan.next() + " ";
+				i = 2;
+			}
+			
+			else if (i == 2) {
+				tot += scan.next() + "\n";
+				i = 1;
+			}
+		}
+		return tot;
+	}
+	
 	/**
 	 * Gets names from an input file
 	 * @return an arraylist of arraylists of names, first and last
@@ -90,7 +113,7 @@ public class Patient extends Person {
 	public static ArrayList<ArrayList<String>> getNames() throws IOException {
 		ArrayList<String> fname = new ArrayList<String>();
 		ArrayList<String> lname = new ArrayList<String>();
-		Scanner buf = new Scanner(new File("Names.txt"));
+		Scanner buf = new Scanner((new Patient()).names());
 		while (buf.hasNextLine()) {
 			String s = buf.nextLine();
 			if (s == null)
